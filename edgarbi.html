@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John's Power BI Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #0078D4;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        nav {
+            text-align: center;
+            background-color: #333;
+            padding: 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+        nav a:hover {
+            color: #0078D4;
+        }
+        .container {
+            padding: 2rem;
+        }
+        .about-section, .portfolio-section {
+            margin-bottom: 3rem;
+        }
+        .about-section h2, .portfolio-section h2 {
+            color: #0078D4;
+        }
+        .embed-container {
+            margin: 1rem 0;
+            text-align: center;
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            max-width: 1200px;
+            height: 600px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>John's Power BI Portfolio</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <h2>About Me</h2>
+            <p>Hello! I’m John, a Power BI enthusiast and freelance developer. I specialize in creating dynamic data visualizations and insightful business intelligence reports. Below you’ll find a few of my projects showcasing my skills in Power BI.</p>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio-section">
+            <h2>Portfolio</h2>
+
+            <p>Here are some of my recent Power BI projects. Click on any of the reports to explore further.</p>
+
+            <!-- Power BI Report 1 -->
+            <div class="embed-container">
+                <h3>Project 1: F1 Data Analysis</h3>
+                <iframe src="https://app.powerbi.com/reportEmbed?reportId=your-report-id-1&groupId=your-group-id" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+
+            <!-- Power BI Report 2 -->
+            <div class="embed-container">
+                <h3>Project 2: Employee Performance Dashboard</h3>
+                <iframe src="https://app.powerbi.com/reportEmbed?reportId=your-report-id-2&groupId=your-group-id" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+
+            <!-- Additional Reports can be added here following the same structure -->
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>If you'd like to discuss a project or need assistance, feel free to reach out to me:</p>
+            <p>Email: <a href="mailto:john@example.com">john@example.com</a></p>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 John's Power BI Portfolio</p>
+    </footer>
+
+</body>
+</html>
