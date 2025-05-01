@@ -1,128 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John's Power BI Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #0078D4;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        nav {
-            text-align: center;
-            background-color: #333;
-            padding: 1rem;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2rem;
-        }
-        nav a:hover {
-            color: #0078D4;
-        }
-        .container {
-            padding: 2rem;
-        }
-        .about-section, .portfolio-section {
-            margin-bottom: 3rem;
-        }
-        .about-section h2, .portfolio-section h2 {
-            color: #0078D4;
-        }
-        .embed-container {
-            margin: 1rem 0;
-            text-align: center;
-        }
-        iframe {
-            border: none;
-            width: 100%;
-            max-width: 1200px;
-            height: 600px;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edgar Pagulayan | Power BI Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --text-light: #1a1a1a;
+      --bg-dark: #1a1a1a;
+      --text-dark: #f9f9f9;
+    }
+
+    [data-theme="light"] {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    [data-theme="dark"] {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: inherit;
+      margin-top: 0.5rem;
+    }
+
+    .toggle-btn {
+      margin-top: 1rem;
+      background: none;
+      border: 1px solid currentColor;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .report-container {
+      width: 100%;
+      max-width: 1000px;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .nav-buttons {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .nav-buttons button {
+      background-color: transparent;
+      border: 1px solid currentColor;
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      text-align: center;
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Edgar Pagulayan</h1>
+    <p>Power BI Portfolio</p>
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Light/Dark</button>
+  </header>
 
-    <!-- Header -->
-    <header>
-        <h1>John's Power BI Portfolio</h1>
-    </header>
+  <div class="report-container">
+    <iframe id="reportFrame" title="Power BI Report" src="https://app.powerbi.com/view?r=YOUR_EMBED_LINK_1" allowFullScreen="true"></iframe>
+  </div>
 
-    <!-- Navigation -->
-    <nav>
-        <a href="#about">About Me</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-    </nav>
+  <div class="nav-buttons">
+    <button onclick="prevReport()">← Previous</button>
+    <button onclick="nextReport()">Next →</button>
+  </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <h2>About Me</h2>
-            <p>Hello! I’m John, a Power BI enthusiast and freelance developer. I specialize in creating dynamic data visualizations and insightful business intelligence reports. Below you’ll find a few of my projects showcasing my skills in Power BI.</p>
-        </section>
+  <footer>
+    © 2025 Edgar Pagulayan • Built with GitHub Pages
+  </footer>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="portfolio-section">
-            <h2>Portfolio</h2>
+  <script>
+    const reports = [
+      "https://app.powerbi.com/view?r=YOUR_EMBED_LINK_1",
+      "https://app.powerbi.com/view?r=YOUR_EMBED_LINK_2",
+      "https://app.powerbi.com/view?r=YOUR_EMBED_LINK_3"
+    ];
+    let currentIndex = 0;
+    const frame = document.getElementById("reportFrame");
 
-            <p>Here are some of my recent Power BI projects. Click on any of the reports to explore further.</p>
+    function nextReport() {
+      currentIndex = (currentIndex + 1) % reports.length;
+      frame.src = reports[currentIndex];
+    }
 
-            <!-- Power BI Report 1 -->
-            <div class="embed-container">
-                <h3>Project 1: F1 Data Analysis</h3>
-                <iframe src="https://app.powerbi.com/reportEmbed?reportId=your-report-id-1&groupId=your-group-id" frameborder="0" allowFullScreen="true"></iframe>
-            </div>
+    function prevReport() {
+      currentIndex = (currentIndex - 1 + reports.length) % reports.length;
+      frame.src = reports[currentIndex];
+    }
 
-            <!-- Power BI Report 2 -->
-            <div class="embed-container">
-                <h3>Project 2: Employee Performance Dashboard</h3>
-                <iframe src="https://app.powerbi.com/reportEmbed?reportId=your-report-id-2&groupId=your-group-id" frameborder="0" allowFullScreen="true"></iframe>
-            </div>
-
-            <!-- Additional Reports can be added here following the same structure -->
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>If you'd like to discuss a project or need assistance, feel free to reach out to me:</p>
-            <p>Email: <a href="mailto:john@example.com">john@example.com</a></p>
-        </section>
-
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 John's Power BI Portfolio</p>
-    </footer>
-
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "light" ? "dark" : "light";
+    }
+  </script>
 </body>
 </html>
