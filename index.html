@@ -278,4 +278,44 @@
 
   <div class="report-grid">
     <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D"></iframe>
+    </div>
+
+    <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiZTUyMDI1YzgtNjE2YS00OTQ5LWI1NDYtZWZlNTNkZWNhZmE1IiwidCI6ImI3M2IxZDZlLTIxZDUtNGUzOC1iMjM5LTgxMzRkOWQyYmY3OCIsImMiOjh9')">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTUyMDI1YzgtNjE2YS00OTQ5LWI1NDYtZWZlNTNkZWNhZmE1IiwidCI6ImI3M2IxZDZlLTIxZDUtNGUzOC1iMjM5LTgxMzRkOWQyYmY3OCIsImMiOjh9"></iframe>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <iframe id="modal-iframe" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/edgarjohnpagulayan" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn">
+    </a>
+    <a href="https://github.com/edgarjohnpagulayan" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+    </a>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Edgar John Pagulayan. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function openModal(url) {
+      document.getElementById('modal').style.display = 'flex';
+      document.getElementById('modal-iframe').src = url;
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+      document.getElementById('modal-iframe').src = '';
+    }
+  </script>
+</body>
+</html>
