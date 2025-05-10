@@ -112,8 +112,6 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      background-color: #000;
     }
 
     .report-thumb:hover {
@@ -126,49 +124,43 @@
       width: 100%;
       height: 100%;
       border: none;
-      pointer-events: auto;
+      pointer-events: none;
     }
 
+    /* Modal Styles */
     .modal {
       display: none;
       position: fixed;
-      top: 0;
+      z-index: 1000;
       left: 0;
+      top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(20, 20, 20, 0.9);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
     }
 
     .modal-content {
-      position: relative;
-      width: 90%;
-      max-width: 1400px;
-      aspect-ratio: 16/9;
-      background-color: #000;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      margin: 5% auto;
+      display: block;
+      width: 80%;
+      max-width: 1000px;
     }
 
     .modal-content iframe {
       width: 100%;
-      height: 100%;
+      height: 600px;
       border: none;
     }
 
     .close-btn {
       position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 2.2rem;
-      background: none;
-      color: #ffffff;
-      border: none;
+      top: 15px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
       cursor: pointer;
-      z-index: 10;
     }
 
     .social-links {
@@ -196,6 +188,7 @@
       opacity: 0.7;
     }
 
+    /* Toggle Switch for Theme */
     .toggle-switch {
       display: flex;
       justify-content: center;
@@ -266,9 +259,10 @@
 
     <div class="certifications">
       <h3>Microsoft Certifications</h3>
+      <p>Here are the certifications I have achieved:</p>
       <p>
-        <a href="https://www.credly.com/badges/63364630-4a97-49c6-b387-bd5eec2c960e" target="_blank">Power BI Data Analyst Associate</a> |
-        <a href="https://www.credly.com/badges/12437f21-6ad4-4d57-bb5e-c46debf01448" target="_blank">Azure Fundamentals</a>
+        <a href="https://www.credly.com/badges/63364630-4a97-49c6-b387-bd5eec2c960e" target="_blank">Microsoft Certified: Power BI Data Analyst Associate</a> |
+        <a href="https://www.credly.com/badges/12437f21-6ad4-4d57-bb5e-c46debf01448" target="_blank">Microsoft Certified: Azure Fundamentals</a>
       </p>
     </div>
   </div>
@@ -277,58 +271,33 @@
 
   <div class="report-grid">
     <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D" allowfullscreen></iframe>
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiZTUyMDI1YzgtNjE2YS00OTQ5LWI1NDYtZWZlNTNkZWNhZmE1IiwidCI6ImI3M2IxZDZlLTIxZDUtNGUzOC1iMjM5LTgxMzRkOWQyYmY3OCIsImMiOjh9')">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTUyMDI1YzgtNjE2YS00OTQ5LWI1NDYtZWZlNTNkZWNhZmE1IiwidCI6ImI3M2IxZDZlLTIxZDUtNGUzOC1iMjM5LTgxMzRkOWQyYmY3OCIsImMiOjh9" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 
-  <div class="social-links">
-    <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" />
-    </a>
-    <a href="https://github.com/your-github-profile" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" />
-    </a>
+  <div id="modal" class="modal">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <iframe id="modal-iframe" src="" allowfullscreen></iframe>
+    </div>
   </div>
 
   <footer>
-    © 2025 Edgar John Pagulayan • Built with GitHub Pages
-    <div class="toggle-switch">
-      <label class="switch">
-        <input type="checkbox" onclick="toggleTheme()">
-        <span class="slider"></span>
-      </label>
-    </div>
+    <p>© 2025 Edgar John Pagulayan | All Rights Reserved</p>
   </footer>
 
-  <div class="modal" id="reportModal" onclick="closeModal()">
-    <div class="modal-content" onclick="event.stopPropagation();">
-      <button class="close-btn" onclick="closeModal()">×</button>
-      <iframe id="modalIframe" src="" allowfullscreen></iframe>
-    </div>
-  </div>
-
   <script>
-    function openModal(embedUrl) {
-      document.getElementById('modalIframe').src = embedUrl;
-      document.getElementById('reportModal').style.display = 'flex';
-      document.addEventListener('keydown', escHandler);
+    function openModal(url) {
+      document.getElementById("modal").style.display = "block";
+      document.getElementById("modal-iframe").src = url;
     }
 
     function closeModal() {
-      document.getElementById('reportModal').style.display = 'none';
-      document.getElementById('modalIframe').src = '';
-      document.removeEventListener('keydown', escHandler);
-    }
-
-    function escHandler(event) {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
-    }
-
-    function toggleTheme() {
-      const html = document.documentElement;
-      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      document.getElementById("modal").style.display = "none";
+      document.getElementById("modal-iframe").src = "";
     }
   </script>
 </body>
