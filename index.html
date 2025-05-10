@@ -127,45 +127,48 @@
       pointer-events: none;
     }
 
-    /* Modal Styles */
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
-      left: 0;
       top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(20, 20, 20, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
     }
 
     .modal-content {
-      margin: 5% auto;
-      display: block;
-      width: 100%;
-      max-width: 100%;
+      position: relative;
+      width: 95vw;
+      height: 95vh;
+      background-color: #000;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .modal-content iframe {
-      width: 95%;
-      height: 95vh;
+      width: 100%;
+      height: 100%;
       border: none;
     }
 
-    .close-btn, .escape-btn {
+    .close-btn {
       position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #fff;
-      font-size: 40px;
-      font-weight: bold;
+      top: 10px;
+      right: 20px;
+      font-size: 2.2rem;
+      background: none;
+      color: #ffffff;
+      border: none;
       cursor: pointer;
-    }
-
-    .escape-btn {
-      top: 15px;
-      left: 35px;
+      z-index: 10;
     }
 
     .social-links {
@@ -193,7 +196,6 @@
       opacity: 0.7;
     }
 
-    /* Toggle Switch for Theme */
     .toggle-switch {
       display: flex;
       justify-content: center;
@@ -276,45 +278,4 @@
 
   <div class="report-grid">
     <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiZTUyMDI1YzgtNjE2YS00OTQ5LWI1NDYtZWZlNTNkZWNhZmE1IiwidCI6ImI3M2IxZDZlLTIxZDUtNGUzOC1iMjM5LTgxMzRkOWQyYmY3OCIsImMiOjh9')">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTUyMDI1YzgtNjE2YS00OTQ5LWI1NDYtZWZlNTNkZWNhZmE1IiwidCI6ImI3M2IxZDZlLTIxZDUtNGUzOC1iMjM5LTgxMzRkOWQyYmY3OCIsImMiOjh9" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div id="modal" class="modal">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <span class="escape-btn" onclick="closeModal()">&larr;</span>
-    <div class="modal-content">
-      <iframe id="modal-iframe" src="" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <!-- Social Links -->
-  <div class="social-links">
-    <a href="https://www.linkedin.com/in/edgar-john-pagulayan/" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn">
-    </a>
-    <a href="https://github.com/edgar-john-pagulayan" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
-    </a>
-  </div>
-
-  <footer>
-    <p>© 2025 Edgar John Pagulayan | All Rights Reserved</p>
-  </footer>
-
-  <script>
-    function openModal(url) {
-      document.getElementById("modal").style.display = "block";
-      document.getElementById("modal-iframe").src = url;
-    }
-
-    function closeModal() {
-      document.getElementById("modal").style.display = "none";
-      document.getElementById("modal-iframe").src = "";
-    }
-  </script>
-</body>
-</html>
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3
