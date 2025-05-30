@@ -82,15 +82,12 @@
       margin-bottom: 1.2rem;
     }
 
-    .certifications a {
-      color: #4e9fd1;
-      font-weight: 600;
-      text-decoration: none;
-      margin: 0 15px;
+    .certifications img {
+      height: 100px;
       transition: transform 0.2s ease;
     }
 
-    .certifications a:hover {
+    .certifications a:hover img {
       transform: scale(1.05);
     }
 
@@ -157,6 +154,7 @@
       width: 100%;
       height: 100%;
       border: none;
+      pointer-events: auto;
     }
 
     .close-btn {
@@ -165,7 +163,7 @@
       right: 20px;
       font-size: 2.2rem;
       background: none;
-      color: #000000;
+      color: #ffffff;
       border: none;
       cursor: pointer;
       z-index: 10;
@@ -268,10 +266,14 @@
     <div class="certifications">
       <h3>Microsoft Certifications</h3>
       <p>Here are the certifications I have achieved:</p>
-      <p>
-        <a href="https://www.credly.com/badges/63364630-4a97-49c6-b387-bd5eec2c960e" target="_blank">Microsoft Certified: Power BI Data Analyst Associate</a> |
-        <a href="https://www.credly.com/badges/12437f21-6ad4-4d57-bb5e-c46debf01448" target="_blank">Microsoft Certified: Azure Fundamentals</a>
-      </p>
+      <div style="display: flex; justify-content: center; gap: 30px; margin-top: 10px; flex-wrap: wrap;">
+        <a href="https://www.credly.com/badges/63364630-4a97-49c6-b387-bd5eec2c960e" target="_blank">
+          <img src="badge1-placeholder.png" alt="Power BI Badge" />
+        </a>
+        <a href="https://www.credly.com/badges/12437f21-6ad4-4d57-bb5e-c46debf01448" target="_blank">
+          <img src="badge2-placeholder.png" alt="Azure Badge" />
+        </a>
+      </div>
     </div>
   </div>
 
@@ -281,15 +283,15 @@
     <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
       <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D"></iframe>
     </div>
-  
+
     <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiZTUyMDI1YzgtNjE2YS00OTQ5LWI1NDYtZWZlNTNkZWNhZmE1IiwidCI6ImI3M2IxZDZlLTIxZDUtNGUzOC1iMjM5LTgxMzRkOWQyYmY3OCIsImMiOjh9')">
       <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTUyMDI1YzgtNjE2YS00OTQ5LWI1NDYtZWZlNTNkZWNhZmE1IiwidCI6ImI3M2IxZDZlLTIxZDUtNGUzOC1iMjM5LTgxMzRkOWQyYmY3OCIsImMiOjh9"></iframe>
     </div>
-  
+
     <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiZGZiYjMzNDAtMTYxYi00YzRkLTk0ZTYtZDRjZTI3NWE3YWZjIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
       <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZGZiYjMzNDAtMTYxYi00YzRkLTk0ZTYtZDRjZTI3NWE3YWZjIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D"></iframe>
     </div>
-  
+
     <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiZDEyNjc1ZDAtNmQ3Yi00M2EzLWFkYzctMDY5ZGI2YzMyODBiIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
       <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZDEyNjc1ZDAtNmQ3Yi00M2EzLWFkYzctMDY5ZGI2YzMyODBiIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D"></iframe>
     </div>
@@ -307,6 +309,13 @@
   <footer>
     <p>&copy; 2025 Edgar John Pagulayan. All rights reserved.</p>
   </footer>
+
+  <div id="modal" class="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <iframe id="modal-iframe" src=""></iframe>
+    </div>
+  </div>
 
   <script>
     function openModal(url) {
