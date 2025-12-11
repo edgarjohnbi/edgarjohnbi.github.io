@@ -1,33 +1,391 @@
-<div class="certifications" style="max-width: 800px; margin: 40px auto; text-align: center;">
-  <h3 style="font-size: 1.6em; margin-bottom: 10px;">Microsoft Certifications</h3>
-  <p>I’ve earned certifications in the following:</p>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HES09DX1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
+  gtag('config', 'G-0HES09DX1Y');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edgar John Pagulayan | Power BI Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-light: #ffffff;
+      --text-light: #222;
+      --bg-dark: #181818;
+      --text-dark: #f9f9f9;
+      --border-color: #333;
+      --shadow-color: rgba(0, 0, 0, 0.2);
+      --line-color: #444;
+    }
 
-    <!-- PL-300 Badge -->
-    <div style="text-align: center;">
-      <a href="https://learn.microsoft.com/api/credentials/share/en-us/EdgarJohnPagulayan-3973/C5005FCD6C2036A0?sharingId=F4BEC5D6778AB124" target="_blank">
-        <img src="https://i.ibb.co/Qv9xWkmC/pl300-bage.png" alt="Power BI Badge" style="height: 100px;" />
-      </a>
-      <div style="margin-top: 6px; font-weight: 600;">PL-300</div>
-    </div>
+    [data-theme="dark"] {
+      background: linear-gradient(135deg, #0d0d0d, #1a0f2e);
+      color: var(--text-dark);
+    }
 
-    <!-- Fabric Data Engineer Badge (NEW) -->
-    <div style="text-align: center;">
-      <a href="#" target="_blank">
-        <!-- Placeholder image – replace later -->
-        <img src="https://i.ibb.co/Qv9xWkmC/pl300-bage.png" alt="Fabric Data Engineer Badge" style="height: 100px;" />
-      </a>
-      <div style="margin-top: 6px; font-weight: 600;">Fabric Data Engineer</div>
-    </div>
+    [data-theme="light"] {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
 
-    <!-- DP-900 Badge -->
-    <div style="text-align: center;">
-      <a href="https://learn.microsoft.com/api/credentials/share/en-us/EdgarJohnPagulayan-3973/E05B65E90DD73F93?sharingId=F4BEC5D6778AB124" target="_blank">
-        <img src="https://i.ibb.co/dwv3GC60/dp900-badge.png" alt="Azure Badge" style="height: 100px;" />
-      </a>
-      <div style="margin-top: 6px; font-weight: 600;">DP-900</div>
-    </div>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .portfolio-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .portfolio-subtitle {
+      font-size: 1.1rem;
+      color: #aaa;
+    }
+
+    .line {
+      width: 100%;
+      height: 1px;
+      background-color: var(--line-color);
+      margin: 1rem 0;
+    }
+
+    .content-wrapper {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    .introduction, .certifications {
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-top: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .certifications img {
+      height: 100px;
+      transition: transform 0.2s ease;
+    }
+
+    .certifications a:hover img {
+      transform: scale(1.05);
+    }
+
+    .report-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      width: 80%;
+      margin: 2rem auto;
+    }
+
+    .report-thumb {
+      flex: 1 1 calc(50% - 2rem);
+      max-width: calc(50% - 2rem);
+      aspect-ratio: 16/9;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .report-thumb:hover {
+      transform: scale(1.03);
+      z-index: 2;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .report-thumb iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: none;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(20, 20, 20, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 95vw;
+      height: 95vh;
+      background-color: #000;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: auto;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2.2rem;
+      background: none;
+      color: #000000;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 2rem;
+    }
+
+    .social-links a img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links a:hover img {
+      transform: scale(1.1);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #aaa;
+      text-align: center;
+      opacity: 0.7;
+    }
+
+    .toggle-switch {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="portfolio-title">Edgar John Pagulayan</div>
+    <div class="portfolio-subtitle">Power BI & Fabric Data Engineer | End-to-End Solutions</div>
+  </header>
+
+  <div class="line"></div>
+
+  <div class="content-wrapper">
+  <div class="introduction" style="max-width: 100%; margin: auto; line-height: 1.6; font-size: 1.1em; width: 90%;">
+
+    <p>Hello, I'm Edgar John Pagulayan, a mid-level data professional specializing in Power BI and Microsoft Fabric. 
+      I design and deliver end-to-end data solutions: from interactive dashboards to scalable data pipelines, helping businesses turn raw data into actionable insights. 
+      With experience in the oil & gas industry and projects across healthcare, nonprofit, and gaming sectors, I focus on data modeling, automation, and digital transformation using the Microsoft/Azure data stack.</p><br>
+
+    <p>My expertise includes advanced Power BI development—data modeling, DAX optimization, custom visuals, and performance tuning 
+      alongside Fabric data engineering for notebooks, pipelines, Lakehouses, and medallion architecture. 
+      Additionally, I work with SQL, Python, Spark, and REST APIs to automate workflows and deliver scalable, analytics-driven solutions.</p><br>
+
+    
+    <p>Feel free to explore my portfolio below, and don't hesitate to reach out to me at
+      <a href="mailto:work.edgarjohnpagulayan@gmail.com" style="color: blue;">work.edgarjohnpagulayan@gmail.com</a> for collaborations or inquiries!
+    </p>
   </div>
-</div>
+
+
+    <div class="certifications" style="max-width: 800px; margin: 40px auto; text-align: center;">
+      <h3 style="font-size: 1.6em; margin-bottom: 10px;">Microsoft Certifications</h3>
+      <p>I’ve earned certifications in the following:</p>
+
+      <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
+
+        <!-- PL-300 Badge -->
+        <div style="text-align: center;">
+          <a href="https://learn.microsoft.com/api/credentials/share/en-us/EdgarJohnPagulayan-3973/C5005FCD6C2036A0?sharingId=F4BEC5D6778AB124" target="_blank">
+            <img src="https://i.ibb.co/Qv9xWkmC/pl300-bage.png" alt="Power BI Badge" style="height: 100px;" />
+          </a>
+          <div style="margin-top: 6px; font-weight: 600;">PL-300</div>
+        </div>
+
+        <!-- Fabric Data Engineer Badge (NEW) -->
+        <div style="text-align: center;">
+          <a href="#" target="_blank">
+            <!-- Placeholder image – replace later -->
+            <img src="https://i.ibb.co/Qv9xWkmC/pl300-bage.png" alt="Fabric Data Engineer Badge" style="height: 100px;" />
+          </a>
+          <div style="margin-top: 6px; font-weight: 600;">Fabric Data Engineer</div>
+        </div>
+
+        <!-- DP-900 Badge -->
+        <div style="text-align: center;">
+          <a href="https://learn.microsoft.com/api/credentials/share/en-us/EdgarJohnPagulayan-3973/E05B65E90DD73F93?sharingId=F4BEC5D6778AB124" target="_blank">
+            <img src="https://i.ibb.co/dwv3GC60/dp900-badge.png" alt="Azure Badge" style="height: 100px;" />
+          </a>
+          <div style="margin-top: 6px; font-weight: 600;">DP-900</div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="line" style="height: 2px; background-color: #ccc; margin: 40px auto; width: 80%;"></div>
+    
+    <div class="portfolio" style="text-align: center; margin-bottom: 30px;">
+      <h2 style="font-size: 1.8em; margin: 0;">Portfolio</h2>
+    </div>
+
+    
+  <div class="report-grid">
+    
+    <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiNmZhOTUwNDAtYmE0YS00OGM1LTlkZjYtYzY1NGFmNzg5ZTNiIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNmZhOTUwNDAtYmE0YS00OGM1LTlkZjYtYzY1NGFmNzg5ZTNiIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D"></iframe>
+    </div>
+
+    <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMzg2YTM2ZGEtZmNiYi00NDQ0LWI1NWQtZWMyODhhNmJlZmJkIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D"></iframe>
+    </div>
+
+    <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiZGZiYjMzNDAtMTYxYi00YzRkLTk0ZTYtZDRjZTI3NWE3YWZjIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZGZiYjMzNDAtMTYxYi00YzRkLTk0ZTYtZDRjZTI3NWE3YWZjIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D"></iframe>
+    </div>
+
+    <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiZDEyNjc1ZDAtNmQ3Yi00M2EzLWFkYzctMDY5ZGI2YzMyODBiIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZDEyNjc1ZDAtNmQ3Yi00M2EzLWFkYzctMDY5ZGI2YzMyODBiIiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D"></iframe>
+    </div>
+
+    <div class="report-thumb" onclick="openModal('https://app.powerbi.com/view?r=eyJrIjoiZjFlZTgyZDUtZGJlMC00OTllLTg1NjEtYjJlZDUxYWQxNzc0IiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D')">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZjFlZTgyZDUtZGJlMC00OTllLTg1NjEtYjJlZDUxYWQxNzc0IiwidCI6ImY0NGUzOTQ4LTUwOTUtNGZlZS1iOGY3LTU1OWFmOTNlZGFmYiIsImMiOjEwfQ%3D%3D"></iframe>
+    </div>
+
+    <div class="report-thumb" onclick="openModal('https://drive.google.com/file/d/1WeRxaMoKvK2xgykylFcg-XDpxg-9DPST/preview')">
+      <iframe src="https://drive.google.com/file/d/1WeRxaMoKvK2xgykylFcg-XDpxg-9DPST/preview" width="640" height="480" allow="autoplay"></iframe>
+    </div>
+    
+  </div>
+
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/edgar-john-pagulayan/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn">
+    </a>
+    <a href="https://github.com/edgarjohnpagulayan" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+    </a>
+    <a href="mailto:work.edgarjohnpagulayan@gmail.com">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email">
+    </a>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Edgar John Pagulayan. All rights reserved.</p>
+  </footer>
+
+  <div id="modal" class="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <iframe id="modal-iframe" src=""></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openModal(url) {
+      document.getElementById('modal').style.display = 'flex';
+      document.getElementById('modal-iframe').src = url;
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+      document.getElementById('modal-iframe').src = '';
+    }
+  </script>
+</body>
+</html>
